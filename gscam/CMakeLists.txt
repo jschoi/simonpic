@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 2.4.6)
 include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
 
-
 # Set the build type.  Options are:
 #  Coverage       : w/ debug symbols, w/o optimization, w/ code-coverage
 #  Debug          : w/ debug symbols, w/o optimization
@@ -30,5 +29,8 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 #rosbuild_add_executable(example examples/example.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
 
-
-rosbuild_add_executable(image_subscriber src/image_subscriber.cpp)
+include_directories(/usr/include/gstreamer-0.10 /usr/include/glib-2.0 /usr/lib/glib-2.0/include /usr/lib/i386-linux-gnu/glib-2.0/include /usr/lib/x86_64-linux-gnu/glib-2.0/include /usr/include/libxml2)
+#rosbuild_add_executable(gscam src/gscam.cpp)
+rosbuild_add_executable(gscam_simon src/gscam_simon.cpp)
+#target_link_libraries(gscam gstreamer-0.10 gstbase-0.10 gobject-2.0 gmodule-2.0 gthread-2.0 rt xml2 glib-2.0 gstapp-0.10 pthread)
+target_link_libraries(gscam_simon gstreamer-0.10 gstbase-0.10 gobject-2.0 gmodule-2.0 gthread-2.0 rt xml2 glib-2.0 gstapp-0.10 pthread)
